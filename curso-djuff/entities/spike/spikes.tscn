@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c1hg3vbf24jyu"]
+
+[ext_resource type="Script" uid="uid://dxfv2kxguon5w" path="res://script/spike/spikes.gd" id="1_e6s3d"]
+[ext_resource type="Texture2D" uid="uid://c1gm7pl6uk72x" path="res://assets/tilemap/tilemap_packed.png" id="2_1iswh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckb4l"]
+atlas = ExtResource("2_1iswh")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i88t"]
+size = Vector2(16, 16)
+
+[node name="spikes" type="Area2D" unique_id=1394667763]
+script = ExtResource("1_e6s3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=872617316]
+texture = SubResource("AtlasTexture_ckb4l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51750521]
+shape = SubResource("RectangleShape2D_0i88t")
+debug_color = Color(0.9764706, 0, 0, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
