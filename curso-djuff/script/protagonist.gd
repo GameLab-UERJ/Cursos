@@ -5,8 +5,6 @@ const SPEED = 100.0
 const ACCELERATION = 1500.0
 const FRICTION = 2000.0
 
-@onready var camera: Camera2D = $Camera2D
-
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("Left", "Right", "Up", "Down")
 	
@@ -15,7 +13,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
-	print(velocity.length())
 	move_and_slide()
 	global_position = global_position.round()
-	#camera

@@ -24,5 +24,3 @@ shape = SubResource("RectangleShape2D_ckb4l")
 limit_left = -540
 limit_right = 105
 limit_bottom = 680
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
