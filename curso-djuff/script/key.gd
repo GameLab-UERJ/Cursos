@@ -1,4 +1,5 @@
 extends Area2D
+class_name Key
 
 # Cria um sinal para avisar que a chave foi pega
 signal key_collected

@@ -1,4 +1,5 @@
 extends Area2D
+class_name Spike
 
 # Use o get_tree().reload_current_scene(), quando o player encostar no espinho ele morre,
 # fazendo com que o nível comece do zero

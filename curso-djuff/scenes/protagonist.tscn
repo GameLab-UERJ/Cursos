@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clvmw3j82kpuq"]
 
-[ext_resource type="Script" uid="uid://bijckppei80hl" path="res://script/protagonist/protagonist.gd" id="1_xfcwv"]
+[ext_resource type="Script" uid="uid://bijckppei80hl" path="res://script/protagonist.gd" id="1_xfcwv"]
 [ext_resource type="Texture2D" uid="uid://c1gm7pl6uk72x" path="res://assets/tilemap/tilemap_packed.png" id="2_o6brk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckb4l"]
@@ -21,7 +21,8 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ckb4l")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1766866417]
-zoom = Vector2(3, 3)
 limit_left = -540
 limit_right = 105
 limit_bottom = 680
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

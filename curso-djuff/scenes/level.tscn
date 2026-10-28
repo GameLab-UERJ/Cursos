@@ -1,0 +1,123 @@
+[gd_scene format=4 uid="uid://ibuykxm3gmv7"]
+
+[ext_resource type="PackedScene" uid="uid://clvmw3j82kpuq" path="res://scenes/protagonist.tscn" id="1_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://1x0rr652w7s6" path="res://scenes/dungeon.tscn" id="2_2r41h"]
+[ext_resource type="PackedScene" uid="uid://c1hg3vbf24jyu" path="res://scenes/spikes.tscn" id="3_klq6b"]
+[ext_resource type="PackedScene" uid="uid://caphnxl6iugbt" path="res://scenes/key.tscn" id="4_b121j"]
+[ext_resource type="PackedScene" uid="uid://dkq714aqwrgsu" path="res://scenes/door.tscn" id="5_8c41q"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0wj4k"]
+scenes/1/scene = ExtResource("3_klq6b")
+
+[sub_resource type="TileSet" id="TileSet_3w5fx"]
+sources/0 = SubResource("TileSetScenesCollectionSource_0wj4k")
+
+[node name="Level" type="Node2D" unique_id=189276336]
+metadata/_edit_horizontal_guides_ = [-716.0]
+
+[node name="Protagonist" parent="." unique_id=1209243271 instance=ExtResource("1_ppgk2")]
+z_index = 1
+position = Vector2(-238, 613)
+
+[node name="Dungeon" parent="." unique_id=324402765 instance=ExtResource("2_2r41h")]
+
+[node name="Entities" type="Node2D" parent="." unique_id=638949044]
+
+[node name="Spikes" type="TileMapLayer" parent="Entities" unique_id=1136443953]
+tile_map_data = PackedByteArray("AADu/xoAAAAAAAAAAQDu/xsAAAAAAAAAAQDu/xwAAAAAAAAAAQDu/x0AAAAAAAAAAQDu/x4AAAAAAAAAAQDu/x8AAAAAAAAAAQDz/xoAAAAAAAAAAQDz/xsAAAAAAAAAAQDz/xwAAAAAAAAAAQDz/x0AAAAAAAAAAQDz/x4AAAAAAAAAAQDz/x8AAAAAAAAAAQD7/xEAAAAAAAAAAQD7/xIAAAAAAAAAAQD8/xIAAAAAAAAAAQD8/xEAAAAAAAAAAQDx/wgAAAAAAAAAAQDy/wcAAAAAAAAAAQDz/wgAAAAAAAAAAQD0/wcAAAAAAAAAAQD1/wgAAAAAAAAAAQD2/wcAAAAAAAAAAQDw/wcAAAAAAAAAAQDv/wgAAAAAAAAAAQDf/wgAAAAAAAAAAQDh/wgAAAAAAAAAAQDg/wYAAAAAAAAAAQDh/wQAAAAAAAAAAQDf/wQAAAAAAAAAAQD5//f/AAAAAAAAAQD7//b/AAAAAAAAAQD7//X/AAAAAAAAAQD5//b/AAAAAAAAAQAFAPP/AAAAAAAAAQADAPT/AAAAAAAAAQDw/+z/AAAAAAAAAQDu/+7/AAAAAAAAAQDw//H/AAAAAAAAAQDt//T/AAAAAAAAAQD//+v/AAAAAAAAAQAEAOr/AAAAAAAAAQADAA8AAAAAAAAAAQD//wwAAAAAAAAAAQDt//H/AAAAAAAAAQDx/+//AAAAAAAAAQD2/+v/AAAAAAAAAQDq/+r/AAAAAAAAAQDp/+r/AAAAAAAAAQDn/+r/AAAAAAAAAQDl/+r/AAAAAAAAAQDm/+r/AAAAAAAAAQDo/+r/AAAAAAAAAQDv/xYAAAAAAAAAAQDz/w8AAAAAAAAAAQDn/w0AAAAAAAAAAQDj/wsAAAAAAAAAAQDm//X/AAAAAAAAAQDm//b/AAAAAAAAAQDm//f/AAAAAAAAAQDn//7/AAAAAAAAAQDm//7/AAAAAAAAAQDi//3/AAAAAAAAAQDg//z/AAAAAAAAAQDj//v/AAAAAAAAAQDg//r/AAAAAAAAAQDg//j/AAAAAAAAAQDi//j/AAAAAAAAAQDj//X/AAAAAAAAAQDg//T/AAAAAAAAAQDg//L/AAAAAAAAAQDj/+7/AAAAAAAAAQDj//D/AAAAAAAAAQDh/+7/AAAAAAAAAQDf/+z/AAAAAAAAAQA=")
+tile_set = SubResource("TileSet_3w5fx")
+
+[node name="Keys" type="Node2D" parent="Entities" unique_id=2016109330]
+
+[node name="Key" parent="Entities/Keys" unique_id=1555275422 instance=ExtResource("4_b121j")]
+position = Vector2(-303, 612)
+
+[node name="Key2" parent="Entities/Keys" unique_id=728661606 instance=ExtResource("4_b121j")]
+position = Vector2(76, -268)
+
+[node name="Doors" type="Node2D" parent="Entities" unique_id=1084391115]
+
+[node name="Door" parent="Entities/Doors" unique_id=472146645 instance=ExtResource("5_8c41q")]
+z_index = 2
+position = Vector2(-240, 552)
+
+[node name="DoorFinal" parent="Entities/Doors" unique_id=1448482960 instance=ExtResource("5_8c41q")]
+z_index = 2
+position = Vector2(-496, -360)
+
+[connection signal="body_entered" from="Entities/Spikes/Spike" to="Entities/Spikes/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108748" to="Entities/Spikes/@Area2D@108748" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108749" to="Entities/Spikes/@Area2D@108749" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108750" to="Entities/Spikes/@Area2D@108750" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108751" to="Entities/Spikes/@Area2D@108751" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108752" to="Entities/Spikes/@Area2D@108752" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108753" to="Entities/Spikes/@Area2D@108753" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108754" to="Entities/Spikes/@Area2D@108754" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108755" to="Entities/Spikes/@Area2D@108755" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108756" to="Entities/Spikes/@Area2D@108756" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108757" to="Entities/Spikes/@Area2D@108757" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108758" to="Entities/Spikes/@Area2D@108758" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108759" to="Entities/Spikes/@Area2D@108759" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108760" to="Entities/Spikes/@Area2D@108760" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108761" to="Entities/Spikes/@Area2D@108761" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108762" to="Entities/Spikes/@Area2D@108762" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108763" to="Entities/Spikes/@Area2D@108763" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108764" to="Entities/Spikes/@Area2D@108764" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108765" to="Entities/Spikes/@Area2D@108765" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108766" to="Entities/Spikes/@Area2D@108766" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108767" to="Entities/Spikes/@Area2D@108767" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108768" to="Entities/Spikes/@Area2D@108768" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108769" to="Entities/Spikes/@Area2D@108769" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108770" to="Entities/Spikes/@Area2D@108770" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108771" to="Entities/Spikes/@Area2D@108771" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108772" to="Entities/Spikes/@Area2D@108772" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108773" to="Entities/Spikes/@Area2D@108773" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108774" to="Entities/Spikes/@Area2D@108774" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108775" to="Entities/Spikes/@Area2D@108775" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108776" to="Entities/Spikes/@Area2D@108776" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108777" to="Entities/Spikes/@Area2D@108777" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108778" to="Entities/Spikes/@Area2D@108778" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108779" to="Entities/Spikes/@Area2D@108779" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108780" to="Entities/Spikes/@Area2D@108780" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108781" to="Entities/Spikes/@Area2D@108781" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108782" to="Entities/Spikes/@Area2D@108782" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108783" to="Entities/Spikes/@Area2D@108783" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108784" to="Entities/Spikes/@Area2D@108784" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108785" to="Entities/Spikes/@Area2D@108785" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108786" to="Entities/Spikes/@Area2D@108786" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108787" to="Entities/Spikes/@Area2D@108787" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108788" to="Entities/Spikes/@Area2D@108788" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108789" to="Entities/Spikes/@Area2D@108789" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108790" to="Entities/Spikes/@Area2D@108790" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108791" to="Entities/Spikes/@Area2D@108791" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108792" to="Entities/Spikes/@Area2D@108792" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108793" to="Entities/Spikes/@Area2D@108793" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108794" to="Entities/Spikes/@Area2D@108794" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108795" to="Entities/Spikes/@Area2D@108795" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108796" to="Entities/Spikes/@Area2D@108796" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108797" to="Entities/Spikes/@Area2D@108797" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108798" to="Entities/Spikes/@Area2D@108798" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108799" to="Entities/Spikes/@Area2D@108799" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108800" to="Entities/Spikes/@Area2D@108800" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108801" to="Entities/Spikes/@Area2D@108801" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108802" to="Entities/Spikes/@Area2D@108802" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108803" to="Entities/Spikes/@Area2D@108803" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108804" to="Entities/Spikes/@Area2D@108804" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108805" to="Entities/Spikes/@Area2D@108805" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108806" to="Entities/Spikes/@Area2D@108806" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108807" to="Entities/Spikes/@Area2D@108807" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108808" to="Entities/Spikes/@Area2D@108808" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108809" to="Entities/Spikes/@Area2D@108809" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108810" to="Entities/Spikes/@Area2D@108810" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108811" to="Entities/Spikes/@Area2D@108811" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108812" to="Entities/Spikes/@Area2D@108812" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108813" to="Entities/Spikes/@Area2D@108813" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108814" to="Entities/Spikes/@Area2D@108814" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108815" to="Entities/Spikes/@Area2D@108815" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108816" to="Entities/Spikes/@Area2D@108816" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108817" to="Entities/Spikes/@Area2D@108817" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108818" to="Entities/Spikes/@Area2D@108818" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108819" to="Entities/Spikes/@Area2D@108819" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Spikes/@Area2D@108820" to="Entities/Spikes/@Area2D@108820" method="_on_body_entered"]
+[connection signal="key_collected" from="Entities/Keys/Key" to="Entities/Doors/Door" method="_on_key_collected"]
+[connection signal="key_collected" from="Entities/Keys/Key2" to="Entities/Doors/DoorFinal" method="_on_key_collected"]
