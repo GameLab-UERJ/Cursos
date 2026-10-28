@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dkq714aqwrgsu"]
+
+[ext_resource type="Script" uid="uid://c68g85p1u58ul" path="res://script/door/door.gd" id="1_bfv6c"]
+[ext_resource type="Texture2D" uid="uid://c1gm7pl6uk72x" path="res://assets/tilemap/tilemap_packed.png" id="2_dsbe1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sqah"]
+atlas = ExtResource("2_dsbe1")
+region = Rect2(160, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq1c4"]
+atlas = ExtResource("2_dsbe1")
+region = Rect2(160, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5xgf"]
+atlas = ExtResource("2_dsbe1")
+region = Rect2(160, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgyc3"]
+atlas = ExtResource("2_dsbe1")
+region = Rect2(160, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjxdi"]
+atlas = ExtResource("2_dsbe1")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckb4l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sqah")
+}],
+"loop": 1,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq1c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5xgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgyc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjxdi")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i88t"]
+size = Vector2(32, 16)
+
+[node name="door" type="StaticBody2D" unique_id=472146645]
+script = ExtResource("1_bfv6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1849538348]
+sprite_frames = SubResource("SpriteFrames_ckb4l")
+animation = &"close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=585465326]
+shape = SubResource("RectangleShape2D_0i88t")

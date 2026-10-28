@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ckmmwvd0cahnx"]
+
+[node name="tocha" type="Node2D" unique_id=580072714]
+
+[node name="PointLight2D" type="CanvasModulate" parent="." unique_id=64737780]
+
+[node name="Timer" type="Timer" parent="." unique_id=1135582313]
+wait_time = 60.0
+one_shot = true
