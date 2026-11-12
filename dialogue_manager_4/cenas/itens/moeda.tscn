@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://cenas/itens/moeda.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/coin_0.png" id="2_coin0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/coin_1.png" id="3_coin1"]
+[ext_resource type="AudioStreamOggVorbis" path="res://assets/audio/coin.ogg" id="4_audio"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_coin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_coin0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_coin1")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m"]
+radius = 8.0
+
+[node name="Moeda" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_coin")
+animation = &"spin"
+autoplay = "spin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_audio")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

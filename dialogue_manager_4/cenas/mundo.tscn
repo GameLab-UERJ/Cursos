@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://cenas/mundo.gd" id="1_world"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ground.png" id="2_ground"]
+[ext_resource type="Texture2D" path="res://assets/sprites/wall.png" id="3_wall"]
+[ext_resource type="PackedScene" path="res://cenas/portao/portao.tscn" id="4_gate"]
+[ext_resource type="PackedScene" path="res://cenas/npc/npc_guardiao.tscn" id="5_npc"]
+[ext_resource type="PackedScene" path="res://cenas/player/player.tscn" id="6_player"]
+[ext_resource type="PackedScene" path="res://cenas/itens/moeda.tscn" id="7_coin"]
+[ext_resource type="AudioStream" path="res://assets/audio/bg_music.mp3" id="8_music"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_horizontal"]
+size = Vector2(384, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_vertical"]
+size = Vector2(16, 288)
+
+[node name="Mundo" type="Node2D"]
+script = ExtResource("1_world")
+
+[node name="Chao" type="TextureRect" parent="."]
+texture_repeat = 2
+offset_left = -192.0
+offset_top = -144.0
+offset_right = 192.0
+offset_bottom = 144.0
+texture = ExtResource("2_ground")
+stretch_mode = 1
+
+[node name="ParedesVisuais" type="Node2D" parent="."]
+
+[node name="ParedeNorte" type="TextureRect" parent="ParedesVisuais"]
+texture_repeat = 2
+offset_left = -192.0
+offset_top = -144.0
+offset_right = 192.0
+offset_bottom = -128.0
+texture = ExtResource("3_wall")
+stretch_mode = 1
+
+[node name="ParedeSul" type="TextureRect" parent="ParedesVisuais"]
+texture_repeat = 2
+offset_left = -192.0
+offset_top = 128.0
+offset_right = 192.0
+offset_bottom = 144.0
+texture = ExtResource("3_wall")
+stretch_mode = 1
+
+[node name="ParedeOeste" type="TextureRect" parent="ParedesVisuais"]
+texture_repeat = 2
+offset_left = -192.0
+offset_top = -128.0
+offset_right = -176.0
+offset_bottom = 128.0
+texture = ExtResource("3_wall")
+stretch_mode = 1
+
+[node name="ParedeLeste" type="TextureRect" parent="ParedesVisuais"]
+texture_repeat = 2
+offset_left = 176.0
+offset_top = -128.0
+offset_right = 192.0
+offset_bottom = 128.0
+texture = ExtResource("3_wall")
+stretch_mode = 1
+
+[node name="ParedesColisao" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="ColisaoNorte" type="CollisionShape2D" parent="ParedesColisao"]
+position = Vector2(0, -136)
+shape = SubResource("RectangleShape2D_wall_horizontal")
+
+[node name="ColisaoSul" type="CollisionShape2D" parent="ParedesColisao"]
+position = Vector2(0, 136)
+shape = SubResource("RectangleShape2D_wall_horizontal")
+
+[node name="ColisaoOeste" type="CollisionShape2D" parent="ParedesColisao"]
+position = Vector2(-184, 0)
+shape = SubResource("RectangleShape2D_wall_vertical")
+
+[node name="ColisaoLeste" type="CollisionShape2D" parent="ParedesColisao"]
+position = Vector2(184, 0)
+shape = SubResource("RectangleShape2D_wall_vertical")
+
+[node name="Portao" parent="." instance=ExtResource("4_gate")]
+position = Vector2(0, -128)
+
+[node name="NPCGuardiao" parent="." node_paths=PackedStringArray("portao") instance=ExtResource("5_npc")]
+position = Vector2(0, -96)
+portao = NodePath("../Portao")
+
+[node name="Player" parent="." instance=ExtResource("6_player")]
+position = Vector2(0, 50)
+
+[node name="Moeda1" parent="." instance=ExtResource("7_coin")]
+position = Vector2(-120, -50)
+
+[node name="Moeda2" parent="." instance=ExtResource("7_coin")]
+position = Vector2(120, -50)
+
+[node name="Moeda3" parent="." instance=ExtResource("7_coin")]
+position = Vector2(-90, 70)
+
+[node name="MusicaAmbiente" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_music")
+volume_db = -16.0
+autoplay = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="LabelHUD" type="Label" parent="HUD"]
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 320.0
+offset_bottom = 28.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "Fale com o Guardião [E]"

@@ -1,0 +1,35 @@
+~ inicio
+
+if GameState.portao_aberto:
+	Guardião: O portão já está desbloqueado, nobre viajante. Prossiga em sua jornada!
+	=> END
+
+if GameState.moedas >= 3:
+	Guardião: Impressionante! Você reuniu as [color=#ffd700]3 relíquias antigas[/color]!
+	Viajante: Aqui estão elas. O mecanismo agora pode ser ativado?
+	set GameState.moedas -= 3
+	set GameState.portao_aberto = true
+	do abrir_portao()
+	Guardião: O portal foi reativado! O caminho para o além está aberto...
+	=> END
+
+if GameState.missao_aceita:
+	Guardião: Você ainda precisa de mais relíquias. Você possui apenas [color=#ffd700]{{GameState.moedas}} de 3[/color].
+	Guardião: Procure com atenção pelos cantos da masmorra!
+	=> END
+
+Guardião: Alto lá, forasteiro! Ninguém cruza o Portão Ancestral sem provar seu valor.
+Viajante: Eu só preciso passar... O que é necessário?
+Guardião: O mecanismo do portão foi selado pelos antigos. Apenas o poder de [color=#ffd700]3 Relíquias Douradas[/color] pode reativá-lo.
+Guardião: Você aceita procurá-las pela masmorra?
+
+- Sim, vou encontrar essas relíquias!
+	set GameState.missao_aceita = true
+	Guardião: Excelente decisão! Elas estão espalhadas pelos arredores deste salão.
+	Viajante: Certo, voltarei assim que encontrá-las.
+	Guardião: Boa sorte, viajante. Traga ao menos [color=#ffd700]3 relíquias[/color].
+- Não tenho interesse nisso agora.
+	Guardião: Uma lástima... Então o portão permanecerá trancado para você.
+	Guardião: Volte quando tiver a coragem necessária.
+
+=> END
